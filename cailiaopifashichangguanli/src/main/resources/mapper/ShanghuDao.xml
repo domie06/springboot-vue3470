@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ShanghuDao">
+
+
+
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.username as username
+        ,a.password as password
+        ,a.shanghu_name as shanghuName
+        ,a.sex_types as sexTypes
+        ,a.shanghu_id_number as shanghuIdNumber
+        ,a.shanghu_phone as shanghuPhone
+        ,a.shanghu_email as shanghuEmail
+        ,a.shanghu_photo as shanghuPhoto
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.ShanghuView" >
+        SELECT
+        <include refid="Base_Column_List" />
+
+--         级联表的字段
+
+        FROM shanghu  a
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test=" params.username != '' and params.username != null and params.username != 'null' ">
+                and a.username like CONCAT('%',#{params.username},'%')
+            </if>
+            <if test=" params.password != '' and params.password != null and params.password != 'null' ">
+                and a.password like CONCAT('%',#{params.password},'%')
+            </if>
+            <if test=" params.shanghuName != '' and params.shanghuName != null and params.shanghuName != 'null' ">
+                and a.shanghu_name like CONCAT('%',#{params.shanghuName},'%')
+            </if>
+            <if test="params.sexTypes != null and params.sexTypes != ''">
+                and a.sex_types = #{params.sexTypes}
+            </if>
+            <if test=" params.shanghuIdNumber != '' and params.shanghuIdNumber != null and params.shanghuIdNumber != 'null' ">
+                and a.shanghu_id_number like CONCAT('%',#{params.shanghuIdNumber},'%')
+            </if>
+            <if test=" params.shanghuPhone != '' and params.shanghuPhone != null and params.shanghuPhone != 'null' ">
+                and a.shanghu_phone like CONCAT('%',#{params.shanghuPhone},'%')
+            </if>
+            <if test=" params.shanghuEmail != '' and params.shanghuEmail != null and params.shanghuEmail != 'null' ">
+                and a.shanghu_email like CONCAT('%',#{params.shanghuEmail},'%')
+            </if>
+
+        </where>
+
+        order by a.${params.orderBy} desc 
+    </select>
+
+</mapper>

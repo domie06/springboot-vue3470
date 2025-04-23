@@ -1,0 +1,36 @@
+/*定义全局css*/
+body {
+
+    /* 绿色*/
+    /* 全局公共主颜色*/
+    /*--publicMainColor:  #3CB371;*/
+    /* 副颜色*/
+    /*--subColor: #008761;*/
+
+
+    /* 蓝色*/
+    /* 全局公共主颜色*/
+    /*--publicMainColor:  #4477C5;*/
+    /* 副颜色*/
+    /*--subColor: #07588D;*/
+
+    /* 粉色*/
+    /* 全局公共主颜色*/
+    /*--publicMainColor:  #B24592;*/
+    /* 副颜色*/
+    /*--subColor: #E57498;*/
+
+
+    /* 紫色*/
+    /* 全局公共主颜色*/
+    /*--publicMainColor:  #8E2DE2;*/
+    /* 副颜色*/
+    /*--subColor: #A27DE3;*/
+
+
+    /* 黄色*/
+    /* 全局公共主颜色*/
+    --publicMainColor:  #FE8010;
+    /* 副颜色*/
+    --subColor: #F37335;
+}
